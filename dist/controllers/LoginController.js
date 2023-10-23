@@ -20,7 +20,7 @@ class LoginController {
             return res.status(400).json({ mensagem: "E-mail ou senha inválidos" });
         }
         const token = jsonwebtoken_1.default.sign({ id: user.id }, (_a = process.env.JWT_PASS) !== null && _a !== void 0 ? _a : "", {
-            expiresIn: "8h",
+            expiresIn: "24h",
         });
         const { password: _, ...userLogin } = user;
         return res.json({

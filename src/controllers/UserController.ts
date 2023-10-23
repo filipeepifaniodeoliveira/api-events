@@ -45,6 +45,11 @@ export class UserController {
         .status(400)
         .json({ mensagem: "Não encontramos usuários cadastrados!" });
     }
-    return res.status(201).json(users);
+
+    const newArr = users.map((event) => {
+      const { password: _, ...user } = event;
+      return user;
+    });
+    return res.status(201).json(newArr);
   }
 }
